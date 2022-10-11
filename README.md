@@ -1,5 +1,6 @@
-# TodoList, após clonar em sua máquina abra o terminal e use o: npm start
-# Após isso ainda no terminal inicie o servido com o comando: ng s
+# TodoList
+## Logo após clonar em sua máquina, abra o terminal e use o comando: npm start
+## Após isso, ainda no terminal inicie o servido com o comando: ng s
 ## App simples de Lista de tarefas no angular
 ### Tela inicial da aplicação
 <a href="https://imgur.com/O3KZgj5"><img src="https://i.imgur.com/O3KZgj5.jpg" title="source: imgur.com" /></a>
