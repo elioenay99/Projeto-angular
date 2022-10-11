@@ -8,15 +8,15 @@ import { NumberValueAccessor } from '@angular/forms';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements DoCheck {
-  public taskList: Array<TaskList> = [];
+  public taskList: Array<TaskList> = JSON.parse(localStorage.getItem("list") || '[]');
   constructor() {}
 
-  ngDoCheck(){
-      this.taskList.sort( (first, last) => Number(first.checked) - Number(last.checked))
+  ngDoCheck() {
+    this.setLocalStorage();
   }
 
-  public setEmitTaskList(event: string){
-    this.taskList.push({task: event, checked: false})
+  public setEmitTaskList(event: string) {
+    this.taskList.push({ task: event, checked: false });
   }
   public deleteItemTaskList(event: number) {
     this.taskList.splice(event, 1);
@@ -31,14 +31,22 @@ export class TodoListComponent implements DoCheck {
     }
   }
 
-  public validateInput(event: string, index: number){
-
-    if (!event.length){
-      const confirm = window.confirm("Tarefa vazia, deseja deletar ela??");
+  public validateInput(event: string, index: number) {
+    if (!event.length) {
+      const confirm = window.confirm('Tarefa vazia, deseja deletar ela??');
 
       if (confirm) {
         this.deleteItemTaskList(index);
+      }
     }
-  } 
-}
+  }
+
+  public setLocalStorage(){
+    if (this.taskList) {
+      this.taskList.sort(
+        (first, last) => Number(first.checked) - Number(last.checked)
+      );
+      localStorage.setItem('list', JSON.stringify(this.taskList));
+    }
+  }
 }
