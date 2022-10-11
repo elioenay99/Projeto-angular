@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  angulaestudo:
-    image: angulaestudo
-    build:
-      context: .
-      dockerfile: ./Dockerfile
